@@ -9,6 +9,8 @@ Flask-SQLAlchemy==2.0
 Flask-Script==2.0.5
 Flask-WTF==0.11
 Flask-Security
+Flask-Social
+pymysql
 
 # Other
 itsdangerous==0.24
