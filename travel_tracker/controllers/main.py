@@ -2,8 +2,9 @@ from flask import Blueprint, render_template, flash, request, redirect, url_for
 from flask.ext.login import login_user, logout_user, login_required
 
 from travel_tracker.extensions import cache
-from travel_tracker.forms import LoginForm, RegisterForm
-from travel_tracker.models import User
+from travel_tracker.forms import LoginForm, RegisterForm, CreateGroupForm
+from travel_tracker.models import db, User, Group, Landmark, User_Group
+from travel_tracker.utils.object_formatter import generate_landmark_json
 
 main = Blueprint('main', __name__)
 
@@ -22,12 +23,12 @@ def terms_conditions():
 @main.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
-    
+
     if request.method == 'POST' and form.validate_on_submit():
 
         flash('Logged in successfully.', 'success')
         return redirect(request.args.get('next') or url_for('.home'))
-    
+
     return render_template('register.html', form=form)
 
 
@@ -50,6 +51,30 @@ def login():
 def get_dashboard():
 
     return render_template('dashboard.html')
+
+@main.route('/add_group', methods=['POST'])
+@login_required
+def add_group():
+    form = CreateGroupForm()
+    params = request.args
+    user_id = params['user_id']
+    landmarks = params['landmarks']
+    group_name = params['group_name']
+    description = params['description']
+
+    if form.validate_on_submit():
+        landmark_names = []
+        new_group = Group(name=group_name, description=description)
+        db.session.add(new_group)
+        for landmark in landmarks:
+            new_landmark = Landmark(name=landmark['name'], lat=landmark['lat'], lng=landmark['lng'], group=new_group.id)
+            landmark_names.append(landmark['name'])
+            db.session(new_landmark)
+        db.session.commit()
+
+        flash('Created a new Group {group_name} with landmarks {landmarks}'.format(group_name=group_name, landmarks=landmark_names))
+        return (generate_landmark_json(new_group.id))
+    return
 
 
 @main.route('/logout')

@@ -73,13 +73,9 @@ class Group(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(100), unique=True)
     description = db.Column(db.String(10000))
-    landmark_id = db.Column(db.Integer, db.ForeignKey('landmark.id'))
-
-    # def __init__(self, name, description, landmark_id)
 
 
-user_group = db.Table('user_group',
+User_Group = db.Table('user_group',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('group_id', db.Integer, db.ForeignKey('group.id'))
 )
-
