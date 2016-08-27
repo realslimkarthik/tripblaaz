@@ -11,6 +11,7 @@ Flask-WTF==0.11
 Flask-Security
 Flask-Social
 pymysql
+facebook-sdk
 
 # Other
 itsdangerous==0.24
