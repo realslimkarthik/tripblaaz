@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'tripblaaz'
-copyright = """2016, Abhinandan Ramaprasath"""
+copyright = """2016, ABhi"""
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -189,7 +189,7 @@ latex_documents = [
     ('index',
      'tripblaaz.tex',
      'tripblaaz Documentation',
-     """Abhinandan Ramaprasath""", 'manual'),
+     """ABhi""", 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -219,7 +219,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'tripblaaz', 'tripblaaz Documentation',
-     ["""Abhinandan Ramaprasath"""], 1)
+     ["""ABhi"""], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -233,7 +233,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'tripblaaz', 'tripblaaz Documentation',
-     """Abhinandan Ramaprasath""", 'tripblaaz',
+     """ABhi""", 'tripblaaz',
      """Trip tracker app""", 'Miscellaneous'),
 ]
 
