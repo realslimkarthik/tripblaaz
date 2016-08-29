@@ -68,4 +68,8 @@ INSTALLED_APPS += ('django_extensions', )
 # ------------------------------------------------------------------------------
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
+# Facebook
+FACEBOOK_APP_ID='697982927020266'
+FACEBOOK_API_SECRET='34da971ebd7ba29c045f003ddc0f368d'
+
 # Your local stuff: Below this line define 3rd party library settings
